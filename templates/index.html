@@ -1,3 +1,6 @@
+{% load static %}
+{% static "images" as baseUrl %}
+
 <!DOCTYPE HTML>
 <!--
 	Overflow by HTML5 UP
@@ -18,63 +21,97 @@
 		<!-- Header -->
 			<section id="header">
 				<header>
-					<h1>Overflow</h1>
-					<p>By HTML5 UP</p>
+					<h1>Classificação de limas Tahiti utilizando visão computacional</h1>
 				</header>
 				<footer>
-					<a href="#banner" class="button style2 scrolly-middle">Proceed as anticipated</a>
+					<a href="#banner" class="button style2 scrolly-middle">LiMatch</a>
 				</footer>
 			</section>
 
 		<!-- Banner -->
 			<section id="banner">
 				<header>
-					<h2>This is Overflow</h2>
+					<h2>Bem vindo ao LiMatch!</h2>
 				</header>
-				<p>A brand new site template designed by <a href = "http://twitter.com/ajlkn">AJ</a> for <a href="http://html5up.net">HTML5 UP</a>.<br />
-				It’s responsive, built on HTML5/CSS3, and entirely free<br />
-				under the <a href="http://html5up.net/license">Creative Commons license</a>.</p>
+				<p> Contamos com a sua ajuda para aprimorar nossa pesquisa de classificação de Limas Tahiti. <br>Posso contar com você? <br/></p>
 				<footer>
-					<a href="#first" class="button style2 scrolly">Act on this message</a>
+					<a href="#primeiros_passos" class="button style2 scrolly">Vamos lá !</a>
 				</footer>
 			</section>
-
+			<article id="primeiros_passos" class="container box style2">
+				<header>
+					<h2>Primeiros passos</h2>
+					<p>Já vamos começar!<br/>Mas, antes preciso que você olhe esses tipos de cada classe de lima.<br/> Vai ser rapidinho!</p>
+				<a href="#first" class="button style3 scrolly">OK!</a>
+				</header>
+			</article>
 		<!-- Feature 1 -->
-			<article id="first" class="container box style1 right">
-				<a href="#" class="image fit"><img src="images/pic01.jpg" alt="" /></a>
+			<article class="container box style1 right">
+				<img src="static/images/limamodelos/Modelo_LC.jpg" alt="" class="image fit"/>
 				<div class="inner">
 					<header>
-						<h2>Lorem ipsum<br />
-						dolor sit amet</h2>
+						<h2>Liso Com Defeito</h2>
 					</header>
-					<p>Tortor faucibus ullamcorper nec tempus purus sed penatibus. Lacinia pellentesque eleifend vitae est elit tristique velit tempus etiam.</p>
+					<p id="first">Classe que possui a casca predominantemente lisa, podendo ter buracos, marcas e outras colorações indicando defeitos.
+					<br> </br>
+						<a href="#second" class="button style1 scrolly" >OK!</a>
+					</p>
 				</div>
+				<br>
 			</article>
 
 		<!-- Feature 2 -->
-			<article class="container box style1 left">
-				<a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
+			<article  class="container box style1 left">
+				<img src="static/images/limamodelos/Modelo_LS.jpg" alt=""  class="image fit"/>
 				<div class="inner">
 					<header>
-						<h2>Mollis posuere<br />
-						lectus lacus</h2>
+						<h2>Liso Sem Defeito </h2>
 					</header>
-					<p>Rhoncus mattis egestas sed fusce sodales rutrum et etiam ullamcorper. Etiam egestas scelerisque ac duis magna lorem ipsum dolor.</p>
+					<p id="second">Classe cuja casca está lisa e sem imperfeições indicando que o fruto está maduro ideal para consumo.</p>
 				</div>
+				<br>
+				<a href="#third" class="button style1 scrolly">OK!</a>
+			</article>
+		<!-- Feature 3 -->
+			<article  class="container box style1 right">
+				<img src="static/images/limamodelos/Modelo_RC.jpg" alt=""  class="image fit"/>
+				<div class="inner">
+					<header>
+						<h2>Rugoso Com Defeito</h2>
+					</header>
+					<p id="third">Classe que possui casca áspera, tendo  partes com marcas e irregularidades na cor ou forma.
+					<br> </br>
+					<a href="#fourth" class="button style1 scrolly">OK!</a>
+					</p>
+				</div>
+				<br>
+			</article>
+
+		<!-- Feature 4 -->
+			<article  class="container box style1 left">
+				<img src="static/images/limamodelos/Modelo_RS.jpg" alt="" class="image fit"/>
+				<div class="inner">
+					<header>
+						<h2>Rugoso Sem Defeito</h2>
+					</header>
+					<p id="fourth"> Esta classe é reconhecida por ter sua casca extremamente rugosa, mas sem imperfeições.</p>
+				</div>
+				<br>
+				<a href="#Classificar" class="button style1 scrolly">OK!</a>
 			</article>
 
 		<!-- Portfolio -->
-			<article class="container box style2">
+			<article id="Classificar" class="container box style2">
 				<header>
-					<h2>Magnis parturient</h2>
+					<h2>{{teste}} parturient</h2>
 					<p>Justo phasellus et aenean dignissim<br />
 					placerat cubilia purus lectus.</p>
 				</header>
 				<div class="inner gallery">
 					<div class="row gtr-0">
-						<div class="col-3 col-12-mobile"><a href=" static/images/fulls/01.jpg" class="image fit"><img src="static/images/thumbs/01.jpg" alt="" title="Ad infinitum" /></a></div>
-						<div class="col-3 col-12-mobile"><a href="{ % static 'images/fulls/02.jpg' %}" class="image fit"><img src="images/thumbs/02.jpg" alt="" title="Dressed in Clarity" /></a></div>
-						<div class="col-3 col-12-mobile"><a href="{ % static 'images/fulls/03.jpg' %}" class="image fit"><img src="images/thumbs/03.jpg" alt="" title="Raven" /></a></div>
+						<div class="col-3 col-12-mobile"><a href="static/images/fulls/01.jpg" class="image fit"><img src="static/images/thumbs/01.jpg" alt="" title="Ad infinitum" /></a></div>
+						<div class="col-3 col-12-mobile"><a href="static/images/fulls/02.jpg" class="image fit"><img src="static/images/fulls/02.jpg" alt="" title="Dressed in Clarity" /></a></div>
+						<div class="col-3 col-12-mobile"><a href="{ % static 'static/images/fulls/01.jpg' %}" class="image fit"><img src="{ % 'static/images/fulls/01.jpg' %}" alt="" title="Raven" /></a></div>
 						<div class="col-3 col-12-mobile"><a href="{ % static 'images/fulls/04.jpg' %}" class="image fit"><img src="images/thumbs/04.jpg" alt="" title="I'll have a cup of Disneyland, please" /></a></div>
 					</div>
 					<div class="row gtr-0">
@@ -109,113 +146,41 @@
 			</article>
 
 		<!-- Generic -->
-		<!--
+
 			<article class="container box style3">
+				<section>
 				<header>
 					<h2>Generic Box</h2>
 					<p>Just a generic box. Nothing to see here.</p>
 				</header>
-				<section>
-					<header>
-						<h3>Paragraph</h3>
-						<p>This is a subtitle</p>
-					</header>
-					<p>Phasellus nisl nisl, varius id <sup>porttitor sed pellentesque</sup> ac orci. Pellentesque
-					habitant <strong>strong</strong> tristique <b>bold</b> et netus <i>italic</i> malesuada <em>emphasized</em> ac turpis egestas. Morbi
-					leo suscipit ut. Praesent <sub>id turpis vitae</sub> turpis pretium ultricies. Vestibulum sit
-					amet risus elit.</p>
 				</section>
-				<section>
-					<header>
-						<h3>Blockquote</h3>
-					</header>
-					<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget.
-					tempus euismod. Vestibulum ante ipsum primis in faucibus.</blockquote>
-				</section>
-				<section>
-					<header>
-						<h3>Divider</h3>
-					</header>
-					<p>Donec consectetur <a href="#">vestibulum dolor et pulvinar</a>. Etiam vel felis enim, at viverra
-					ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel. Praesent nec orci
-					facilisis leo magna. Cras sit amet urna eros, id egestas urna. Quisque aliquam
-					tempus euismod. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-					posuere cubilia.</p>
-					<hr />
-					<p>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra
-					ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel. Praesent nec orci
-					facilisis leo magna. Cras sit amet urna eros, id egestas urna. Quisque aliquam
-					tempus euismod. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-					posuere cubilia.</p>
-				</section>
-				<section>
-					<header>
-						<h3>Unordered List</h3>
-					</header>
-					<ul>
-						<li>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</li>
-						<li>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</li>
-						<li>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</li>
-						<li>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</li>
-					</ul>
-				</section>
-				<section>
-					<header>
-						<h3>Ordered List</h3>
-					</header>
-					<ol>
-						<li>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</li>
-						<li>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</li>
-						<li>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</li>
-						<li>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</li>
-					</ol>
-				</section>
-				<section>
-					<header>
-						<h3>Table</h3>
+				<h3>Table</h3>
 					</header>
 					<div class="table-wrapper">
 						<table>
-							<thead>
-								<tr>
-									<th>ID</th>
-									<th>Name</th>
-									<th>Description</th>
-									<th>Price</th>
-								</tr>
-							</thead>
 							<tbody>
 								<tr>
 									<td>45815</td>
-									<td>Something</td>
 									<td>Ut porttitor sagittis lorem quis nisi ornare.</td>
 									<td>29.99</td>
 								</tr>
 								<tr>
 									<td>24524</td>
-									<td>Nothing</td>
 									<td>Ut porttitor sagittis lorem quis nisi ornare.</td>
 									<td>19.99</td>
 								</tr>
 								<tr>
 									<td>45815</td>
-									<td>Something</td>
 									<td>Ut porttitor sagittis lorem quis nisi ornare.</td>
 									<td>29.99</td>
 								</tr>
 								<tr>
 									<td>24524</td>
-									<td>Nothing</td>
 									<td>Ut porttitor sagittis lorem quis nisi ornare.</td>
 									<td>19.99</td>
 								</tr>
 							</tbody>
-							<tfoot>
-								<tr>
-									<td colspan="3"></td>
-									<td>100.00</td>
-								</tr>
-							</tfoot>
+
 						</table>
 					</div>
 				</section>
@@ -255,20 +220,16 @@
 					</form>
 				</section>
 			</article>
-		-->
+
 
 		<section id="footer">
 			<ul class="icons">
-				<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-				<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-				<li><a href="#" class="icon brands fa-google-plus-g"><span class="label">Google+</span></a></li>
-				<li><a href="#" class="icon brands fa-pinterest"><span class="label">Pinterest</span></a></li>
-				<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-				<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+				<li><a href="https://drive.google.com/file/d/1WwUvewDIEDqFxQVVpIpSRLb0KvzUt4SF/view?usp=sharing" class="icon brands fa-google-drive"><span class="label">Google Drive</span></a></li>
+				<li><a href="https://github.com/ellengiacometti/LemonCV" class="icon brands fa fa-github"><span class="label">GitHub</span></a></li>
 			</ul>
 			<div class="copyright">
 				<ul class="menu">
-					<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					<li> All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 				</ul>
 			</div>
 		</section>
