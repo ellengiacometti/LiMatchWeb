@@ -33,7 +33,7 @@
 				<header>
 					<h2>Bem vindo ao LiMatch!</h2>
 				</header>
-				<p> Contamos com a sua ajuda para aprimorar nossa pesquisa de classificação de Limas Tahiti. <br>Posso contar com você? <br/></p>
+				<p> Precisamos da sua ajuda para aprimorar nossa pesquisa de classificação de Limas Tahiti. <br>Posso contar com você? <br/></p>
 				<footer>
 					<a href="#primeiros_passos" class="button style2 scrolly">Vamos lá !</a>
 				</footer>
@@ -49,10 +49,10 @@
 			<article class="container box style1 right">
 				<img src="static/images/limamodelos/Modelo_LC.jpg" alt="" class="image fit"/>
 				<div class="inner">
-					<header>
+					<header id="first">
 						<h2>Liso Com Defeito</h2>
 					</header>
-					<p id="first">Classe que possui a casca predominantemente lisa, podendo ter buracos, marcas e outras colorações indicando defeitos.
+					<p>Classe que possui a casca predominantemente lisa, podendo ter buracos, marcas e outras colorações indicando defeitos.
 					<br> </br>
 						<a href="#second" class="button style1 scrolly" >OK!</a>
 					</p>
@@ -64,10 +64,10 @@
 			<article  class="container box style1 left">
 				<img src="static/images/limamodelos/Modelo_LS.jpg" alt=""  class="image fit"/>
 				<div class="inner">
-					<header>
+					<header id="second">
 						<h2>Liso Sem Defeito </h2>
 					</header>
-					<p id="second">Classe cuja casca está lisa e sem imperfeições indicando que o fruto está maduro ideal para consumo.</p>
+					<p >Classe cuja casca está lisa e sem imperfeições indicando que o fruto está maduro ideal para consumo.</p>
 				</div>
 				<br>
 				<a href="#third" class="button style1 scrolly">OK!</a>
@@ -76,10 +76,10 @@
 			<article  class="container box style1 right">
 				<img src="static/images/limamodelos/Modelo_RC.jpg" alt=""  class="image fit"/>
 				<div class="inner">
-					<header>
+					<header id="third">
 						<h2>Rugoso Com Defeito</h2>
 					</header>
-					<p id="third">Classe que possui casca áspera, tendo  partes com marcas e irregularidades na cor ou forma.
+					<p >Classe que possui casca áspera, tendo  partes com marcas e irregularidades na cor ou forma.
 					<br> </br>
 					<a href="#fourth" class="button style1 scrolly">OK!</a>
 					</p>
@@ -91,10 +91,10 @@
 			<article  class="container box style1 left">
 				<img src="static/images/limamodelos/Modelo_RS.jpg" alt="" class="image fit"/>
 				<div class="inner">
-					<header>
+					<header  id="fourth">
 						<h2>Rugoso Sem Defeito</h2>
 					</header>
-					<p id="fourth"> Esta classe é reconhecida por ter sua casca extremamente rugosa, mas sem imperfeições.</p>
+					<p> Esta classe é reconhecida por ter sua casca extremamente rugosa mas, sem imperfeições.</p>
 				</div>
 				<br>
 				<a href="#Classificar" class="button style1 scrolly">OK!</a>
@@ -103,10 +103,13 @@
 		<!-- Portfolio -->
 			<article id="Classificar" class="container box style2">
 				<header>
-					<h2>{{teste}} parturient</h2>
-					<p>Justo phasellus et aenean dignissim<br />
-					placerat cubilia purus lectus.</p>
+					<h2>Você está pronto!</h2>
+					<p>Agora que você já sabe tudo sobre as classes de limas, vamos começar a classificação.<br>
+					É simples, basta selecionar a classe que mais se adequa a lima exibida e enviar para gente.</br></p>
 				</header>
+
+				<!--Lista de Figuras-->
+				<!-- REMOVER
 				<div class="inner gallery">
 					<div class="row gtr-0">
 						<div class="col-3 col-12-mobile"><a href="static/images/fulls/01.jpg" class="image fit"><img src="static/images/thumbs/01.jpg" alt="" title="Ad infinitum" /></a></div>
@@ -123,7 +126,7 @@
 				</div>
 			</article>
 
-		<!-- Contact -->
+		   -- Contact --
 			<article class="container box style3">
 				<header>
 					<h2>Nisl sed ultricies</h2>
@@ -144,26 +147,40 @@
 					</div>
 				</form>
 			</article>
-
+		-->
 		<!-- Generic -->
 
 			<article class="container box style3">
+				<!--
 				<section>
 				<header>
 					<h2>Generic Box</h2>
 					<p>Just a generic box. Nothing to see here.</p>
 				</header>
 				</section>
-				<h3>Table</h3>
+				-->
+				<h2>Limas</h2>
 					</header>
 					<div class="table-wrapper">
 						<table>
 							<tbody>
 								<tr>
-									<td>45815</td>
-									<td>Ut porttitor sagittis lorem quis nisi ornare.</td>
-									<td>29.99</td>
+									<td><img src="static/images/limamodelos/Modelo_RS.jpg" alt="" class="image fit"/></td>
+									<td style="text-align: center; vertical-align: middle;" >
+										<div style="border: 11px solid green;">
+										<select name="Lima" >
+											<option value="">Classe</option>
+											<option value="1">Lisa Sem Defeito</option>
+											<option value="2">Lisa Com Defeito</option>
+											<option value="3">Rugosa Sem Defeito</option>
+											<option value="4">Rugosa Com Defeito</option>
+											<option value="5">Imagem Borrada</option>
+										</select>
+										</div>
+									</td>
 								</tr>
+
+
 								<tr>
 									<td>24524</td>
 									<td>Ut porttitor sagittis lorem quis nisi ornare.</td>
@@ -197,16 +214,15 @@
 								<input class="text" type="text" name="email" id="email" value="" placeholder="johndoe@domain.tld" />
 							</div>
 							<div class="col-12">
-								<select name="department" id="department">
-									<option value="">Choose a department</option>
-									<option value="1">Manufacturing</option>
-									<option value="2">Administration</option>
-									<option value="3">Support</option>
+								<select name="cargo" id="cargo">
+									<option value="">Atua como</option>
+									<option value="1">Estudante</option>
+									<option value="2">Professor</option>
+									<option value="3">TI</option>
+									<option value="4">Outros</option>
 								</select>
 							</div>
-							<div class="col-12">
-								<input class="text" type="text" name="subject" id="subject" value="" placeholder="Enter your subject" />
-							</div>
+
 							<div class="col-12">
 								<textarea name="message" id="message" placeholder="Enter your message"></textarea>
 							</div>
@@ -229,7 +245,7 @@
 			</ul>
 			<div class="copyright">
 				<ul class="menu">
-					<li> All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					<li> All rights reserved.</li><li>Design based on: <a href="http://html5up.net">HTML5 UP</a></li><li>Edited by: Ellen Giacometti</li>
 				</ul>
 			</div>
 		</section>
