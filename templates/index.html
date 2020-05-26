@@ -149,8 +149,30 @@
 			</article>
 		-->
 		<!-- Generic -->
+<!-- Feature 1 -->
+			<article class="container box style1 right">
+				<img src="static/images/limamodelos/Modelo_LC.jpg" alt="" class="image fit"/>
+				<div class="inner">
+					<header>
+					</header>>
+					<p>
+						< p style="border: 11px solid green;">
+										<select name="Lima" >
+											<option value="">Classe</option>
+											<option value="1">Lisa Sem Defeito</option>
+											<option value="2">Lisa Com Defeito</option>
+											<option value="3">Rugosa Sem Defeito</option>
+											<option value="4">Rugosa Com Defeito</option>
+											<option value="5">Imagem Borrada</option>
+										</select>
+					</p>
+				</div>
+				<br>
+			</article>
 
-			<article class="container box style3">
+
+
+
 				<!--
 				<section>
 				<header>
@@ -159,6 +181,7 @@
 				</header>
 				</section>
 				-->
+				<!--
 				<h2>Limas</h2>
 					</header>
 					<div class="table-wrapper">
@@ -202,10 +225,14 @@
 					</div>
 				</section>
 				<section>
-					<header>
-						<h3>Form</h3>
+
+					-->
+				<article class="container box style3">
+				   <header>
+				   <h2>Form</h2>
 					</header>
-					<form method="post" action="#">
+					<form method="post" action="teste" >
+						{% csrf_token %}
 						<div class="row">
 							<div class="col-6 col-12-mobile">
 								<input class="text" type="text" name="name" id="name" value="" placeholder="John Doe" />
@@ -216,10 +243,10 @@
 							<div class="col-12">
 								<select name="cargo" id="cargo">
 									<option value="">Atua como</option>
-									<option value="1">Estudante</option>
-									<option value="2">Professor</option>
-									<option value="3">TI</option>
-									<option value="4">Outros</option>
+									<option value="ET">Estudante</option>
+									<option value="PF">Professor</option>
+									<option value="TI">TI</option>
+									<option value="OT">Outros</option>
 								</select>
 							</div>
 

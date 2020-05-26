@@ -29,6 +29,7 @@ ALLOWED_HOSTS = ['ec2-18-188-226-184.us-east-2.compute.amazonaws.com','127.0.0.1
 # Application definition
 
 INSTALLED_APPS = [
+    'lima.apps.LimaConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -62,7 +63,13 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
         },
-    },
+        },
+        {
+            'BACKEND': 'django.template.backends.jinja2.Jinja2',
+            'DIRS': [
+                '/home/html/jinja2',
+            ],
+         },
 ]
 
 WSGI_APPLICATION = 'LiMatchWeb.wsgi.application'
@@ -71,11 +78,21 @@ WSGI_APPLICATION = 'LiMatchWeb.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
+
+'default': {
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': 'postgres',
+    'USER': 'postgres',
+    'PASSWORD': 'postgres',
+    'HOST': 'limatch.cvixklymkeit.us-east-2.rds.amazonaws.com',
+    'PORT': '5432',
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -118,3 +135,4 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+
