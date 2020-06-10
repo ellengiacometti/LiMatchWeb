@@ -1,1 +1,1 @@
-'web: gunicorn LiMatchWeb.wsgi --log-file -'
+web: gunicorn LiMatchWeb.wsgi
