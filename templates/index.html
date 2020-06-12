@@ -40,7 +40,7 @@
 			</section>
 
 		<!-- Dados Cadastrais -->
-			<article id="DadosCadastrais" class="container box style3">
+			<form id="DadosCadastrais" class="container box style3">
 				<header>
 					<p>Já vamos começar! Mas, antes preciso de alguns dados seus.<br/> Vai ser rapidinho!</p>
 					<header>
@@ -68,6 +68,7 @@
 					<br>
 					<a href="#Instruir" class="button style3 scrolly">Feito!</a>
 				</header>
+			</form>
 			</article>
  	<!-- Instrução -->
 			<article id="Instruir" class="container box style3">
@@ -184,8 +185,9 @@
 <!-- Feature 1 -->
 
 <section id="Classificar">
+	<form id="Classificacao" class="container box style3">
 		{% for amostra in amostras %}
-			<article class="container box style3 right">
+			<article class="container box style1 right">
 				<img src="{{ urlamostra }}/{{ amostra }} "alt="" class="image fit"/>
 				<div class="inner">
 					<header>
@@ -204,6 +206,16 @@
 				<br>
 			</article>
 		{% endfor %}
+	</form>
+			<article id="Registrar" class="container box style3" method="post">
+							<div class="col-12">
+								<ul class="actions">
+									<li><input type="submit" value="Acabei!" /></li>
+									<li><input type="submit"  value="Mais Amostras!" /></li>
+								</ul>
+							</div>
+
+		</article>
 	</section>
 
 
@@ -267,18 +279,8 @@
 <!--							<div class="col-12">-->
 <!--								<textarea name="message" id="message" placeholder="Enter your message"></textarea>-->
 <!--							</div>-->
-		<section id="Fim">
-		<article id="Registrar" class="container box style3" method="post">
-							<div class="col-12">
-								<ul class="actions">
-									<li><input type="submit" value="Acabei!" /></li>
-									<li><input type="submit"  value="Mais Amostras!" /></li>
-								</ul>
-							</div>
 
-		</article>
-		</section>
-		</form>
+
 
 
 		<section id="footer">

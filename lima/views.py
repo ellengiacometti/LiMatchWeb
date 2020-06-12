@@ -4,21 +4,21 @@ from .models import Pessoa, Amostra
 import random
 
 
-def get_random2(n):
+def get_random_filenames(n):
     max_id = Amostra.objects.latest('id').id
     randomList = random.sample(range(1, max_id), n)
-    return randomList
+    filenames = Amostra.objects.values_list('amostra', flat=True).filter(id__in= randomList)
+    return filenames
 
 # Create your views here.
 
 def index(request):
     # amostras=[]
-    ids_amostra=get_random2(5)
-    filenames = Amostra.objects.values_list('amostra', flat=True).filter(id__in= ids_amostra)
+
     # for id_amostra in ids_amostra:
     #       amostras.append(Amostra.objects.get(id=id_amostra))
     #       print(amostras)
-    print(filenames)
+    filenames=get_random_filenames(9)
     return render(request, 'index.html',{'amostras':filenames})
 
 
