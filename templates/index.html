@@ -1,7 +1,7 @@
-{% load static %}
-{% static "images" as baseUrl %}
-
 <!DOCTYPE HTML>
+{% load static %}
+{% static "images/amostras" as urlamostra %}
+
 <!--
 	Overflow by HTML5 UP
 	html5up.net | @ajlkn
@@ -35,18 +35,54 @@
 				</header>
 				<p> Precisamos da sua ajuda para aprimorar nossa pesquisa de classificação de Limas Tahiti. <br>Posso contar com você? <br/></p>
 				<footer>
-					<a href="#primeiros_passos" class="button style2 scrolly">Vamos lá !</a>
+					<a href="#DadosCadastrais" class="button style2 scrolly">Vamos lá !</a>
 				</footer>
 			</section>
-			<article id="primeiros_passos" class="container box style2">
+
+		<!-- Dados Cadastrais -->
+			<article id="DadosCadastrais" class="container box style3">
 				<header>
-					<h2>Primeiros passos</h2>
-					<p>Já vamos começar!<br/>Mas, antes preciso que você olhe esses tipos de cada classe de lima.<br/> Vai ser rapidinho!</p>
-				<a href="#first" class="button style3 scrolly">OK!</a>
+					<p>Já vamos começar! Mas, antes preciso de alguns dados seus.<br/> Vai ser rapidinho!</p>
+					<header>
+				   <h2>Quem é você?</h2>
+					</header>
+					<form method="post" action="teste" >
+						{% csrf_token %}
+						<div class="row">
+							<div class="col-6 col-12-mobile">
+								<input class="text" type="text" name="name" id="name" value="" placeholder="Ellen Giacometti" />
+							</div>
+							<div class="col-6 col-12-mobile">
+								<input class="text" type="text" name="email" id="email" value="" placeholder="********@gmail.com" />
+							</div>
+							<div class="col-12">
+								<select name="cargo" id="cargo">
+									<option value="">Atua como</option>
+									<option value="ET">Estudante</option>
+									<option value="PF">Professor</option>
+									<option value="TI">TI</option>
+									<option value="OT">Outros</option>
+								</select>
+							</div>
+						</div>
+					<br>
+					<a href="#Instruir" class="button style3 scrolly">Feito!</a>
 				</header>
 			</article>
+ 	<!-- Instrução -->
+			<article id="Instruir" class="container box style3">
+				<header>
+					<h2>Como classificar as limas?</h2>
+					<p> Nessa pesquisa separamos as limas em  quatros categorias.<br>Pode deixar que vou te explicar quais são :) <br>
+						Depois de virar um expert em limas, vou te  mostrar algumas imagens.<br>E aí você me diz em qual categoria a lima da foto se parece.</br></p>
+					<br>
+					<a href="#LC" class="button style3 scrolly">Entendi!</a>
+				</header>
+			</article>
+
+
 		<!-- Feature 1 -->
-			<article class="container box style1 right">
+			<article id=LC class="container box style1 right">
 				<img src="static/images/limamodelos/Modelo_LC.jpg" alt="" class="image fit"/>
 				<div class="inner">
 					<header id="first">
@@ -54,14 +90,14 @@
 					</header>
 					<p>Classe que possui a casca predominantemente lisa, podendo ter buracos, marcas e outras colorações indicando defeitos.
 					<br> </br>
-						<a href="#second" class="button style1 scrolly" >OK!</a>
+						<a href="#LS" class="button style1 scrolly" >OK!</a>
 					</p>
 				</div>
 				<br>
 			</article>
 
 		<!-- Feature 2 -->
-			<article  class="container box style1 left">
+			<article id="LS" class="container box style1 left">
 				<img src="static/images/limamodelos/Modelo_LS.jpg" alt=""  class="image fit"/>
 				<div class="inner">
 					<header id="second">
@@ -70,10 +106,10 @@
 					<p >Classe cuja casca está lisa e sem imperfeições indicando que o fruto está maduro ideal para consumo.</p>
 				</div>
 				<br>
-				<a href="#third" class="button style1 scrolly">OK!</a>
+				<a href="#RC" class="button style1 scrolly">OK!</a>
 			</article>
 		<!-- Feature 3 -->
-			<article  class="container box style1 right">
+			<article id = "RC" class="container box style1 right">
 				<img src="static/images/limamodelos/Modelo_RC.jpg" alt=""  class="image fit"/>
 				<div class="inner">
 					<header id="third">
@@ -88,7 +124,7 @@
 			</article>
 
 		<!-- Feature 4 -->
-			<article  class="container box style1 left">
+			<article id="RS"  class="container box style1 left">
 				<img src="static/images/limamodelos/Modelo_RS.jpg" alt="" class="image fit"/>
 				<div class="inner">
 					<header  id="fourth">
@@ -100,13 +136,9 @@
 				<a href="#Classificar" class="button style1 scrolly">OK!</a>
 			</article>
 
-		<!-- Portfolio -->
-			<article id="Classificar" class="container box style2">
-				<header>
-					<h2>Você está pronto!</h2>
-					<p>Agora que você já sabe tudo sobre as classes de limas, vamos começar a classificação.<br>
-					É simples, basta selecionar a classe que mais se adequa a lima exibida e enviar para gente.</br></p>
-				</header>
+
+
+
 
 				<!--Lista de Figuras-->
 				<!-- REMOVER
@@ -124,7 +156,7 @@
 						<div class="col-3 col-12-mobile"><a href="{ % static 'images/fulls/08.jpg' %}" class="image fit"><img src="images/thumbs/08.jpg" alt="" title="People come and go and walk away" /></a></div>
 					</div>
 				</div>
-			</article>
+
 
 		   -- Contact --
 			<article class="container box style3">
@@ -150,25 +182,29 @@
 		-->
 		<!-- Generic -->
 <!-- Feature 1 -->
-			<article class="container box style1 right">
-				<img src="static/images/limamodelos/Modelo_LC.jpg" alt="" class="image fit"/>
+
+<section id="Classificar">
+		{% for amostra in amostras %}
+			<article class="container box style3 right">
+				<img src="{{ urlamostra }}/{{ amostra }} "alt="" class="image fit"/>
 				<div class="inner">
 					<header>
-					</header>>
-					<p>
-						< p style="border: 11px solid green;">
-										<select name="Lima" >
-											<option value="">Classe</option>
-											<option value="1">Lisa Sem Defeito</option>
-											<option value="2">Lisa Com Defeito</option>
-											<option value="3">Rugosa Sem Defeito</option>
-											<option value="4">Rugosa Com Defeito</option>
-											<option value="5">Imagem Borrada</option>
-										</select>
+					</header>
+					<p >
+						<select class="container" style="border: 5px solid green" name="{{ amostra }}" >
+							<option value="">Escolha</option>
+							<option value="1">Lisa Sem Defeito</option>
+							<option value="2">Lisa Com Defeito</option>
+							<option value="3">Rugosa Sem Defeito</option>
+							<option value="4">Rugosa Com Defeito</option>
+							<option value="5">Imagem Borrada</option>
+						</select>
 					</p>
 				</div>
 				<br>
 			</article>
+		{% endfor %}
+	</section>
 
 
 
@@ -227,42 +263,22 @@
 				<section>
 
 					-->
-				<article class="container box style3">
-				   <header>
-				   <h2>Form</h2>
-					</header>
-					<form method="post" action="teste" >
-						{% csrf_token %}
-						<div class="row">
-							<div class="col-6 col-12-mobile">
-								<input class="text" type="text" name="name" id="name" value="" placeholder="John Doe" />
-							</div>
-							<div class="col-6 col-12-mobile">
-								<input class="text" type="text" name="email" id="email" value="" placeholder="johndoe@domain.tld" />
-							</div>
-							<div class="col-12">
-								<select name="cargo" id="cargo">
-									<option value="">Atua como</option>
-									<option value="ET">Estudante</option>
-									<option value="PF">Professor</option>
-									<option value="TI">TI</option>
-									<option value="OT">Outros</option>
-								</select>
-							</div>
 
-							<div class="col-12">
-								<textarea name="message" id="message" placeholder="Enter your message"></textarea>
-							</div>
+<!--							<div class="col-12">-->
+<!--								<textarea name="message" id="message" placeholder="Enter your message"></textarea>-->
+<!--							</div>-->
+		<section id="Fim">
+		<article id="Registrar" class="container box style3" method="post">
 							<div class="col-12">
 								<ul class="actions">
-									<li><input type="submit" value="Submit" /></li>
-									<li><input type="reset" class="style3" value="Clear Form" /></li>
+									<li><input type="submit" value="Acabei!" /></li>
+									<li><input type="submit"  value="Mais Amostras!" /></li>
 								</ul>
 							</div>
-						</div>
-					</form>
-				</section>
-			</article>
+
+		</article>
+		</section>
+		</form>
 
 
 		<section id="footer">

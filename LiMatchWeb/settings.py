@@ -84,22 +84,17 @@ WSGI_APPLICATION = 'LiMatchWeb.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    # }
+
 DATABASES = {}
 
 DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+
+
+# DATABASES = {
 # 'default': {
-#     'ENGINE': 'django.db.backends.postgresql',
-#     'NAME': 'postgres',
-#     'USER': 'postgres',
-#     'PASSWORD': 'postgres',
-#     'HOST': 'limatch.cvixklymkeit.us-east-2.rds.amazonaws.com',
-#     'PORT': '5432',
-#     }
+#     'ENGINE': 'django.db.backends.sqlite3',
+#     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+# }
 # }
 
 

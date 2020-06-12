@@ -27,7 +27,7 @@ class Amostra(models.Model):
     energy= models.FloatField(default=None)
     contrast= models.FloatField(default=None)
     asm= models.FloatField(default=None)
-    color=models.TextField(max_length=300, unique=True)
+    color=models.TextField(max_length=600)
     raio= models.FloatField(default=None)
 
     def __str__(self):
