@@ -12,12 +12,14 @@ def get_random2(n):
 # Create your views here.
 
 def index(request):
-    amostras=[]
+    # amostras=[]
     ids_amostra=get_random2(5)
-    for id_amostra in ids_amostra:
-          amostras.append(Amostra.objects.get(id=id_amostra))
-          print(amostras)
-    return render(request, 'index.html',{'amostras':amostras})
+    filenames = Amostra.objects.values_list('amostra', flat=True).filter(id__in= ids_amostra)
+    # for id_amostra in ids_amostra:
+    #       amostras.append(Amostra.objects.get(id=id_amostra))
+    #       print(amostras)
+    print(filenames)
+    return render(request, 'index.html',{'amostras':filenames})
 
 
 def teste(request):
