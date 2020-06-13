@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .models import Pessoa, Amostra
 import random
 
-
+global id_pessoa
 def get_random_filenames(n):
     max_id = Amostra.objects.latest('id').id
     randomList = random.sample(range(1, max_id), n)
@@ -13,17 +13,14 @@ def get_random_filenames(n):
 # Create your views here.
 
 def index(request):
-    # amostras=[]
 
-    # for id_amostra in ids_amostra:
-    #       amostras.append(Amostra.objects.get(id=id_amostra))
-    #       print(amostras)
-    filenames=get_random_filenames(9)
-    return render(request, 'index.html',{'amostras':filenames})
+    return render(request, 'index.html')
 
 
-def teste(request):
+
+def classificar(request):
     # TODO: TRATAMENTO PESSOA VAZIA
+    primeiro = True
     email = request.POST["email"]
     if email:
         email_cadastrado = Pessoa.objects.filter(email=email).count()
@@ -32,7 +29,19 @@ def teste(request):
             nome = request.POST["name"]
             info_pessoa = Pessoa(nome=nome, email=email, cargo=cargo)
             info_pessoa.save()
+            print("inseriu!")
+        id_pessoa= Pessoa.objects.get(email=email).pk
+        filenames = get_random_filenames(2)
+        return render(request, 'classificar.html', {'amostras': filenames, 'primeiro': primeiro})
     else:
         print("Preciso de um email")
+        return render(request, 'index.html')
 
-    return render(request,'index.html')
+
+def registrar(request):
+    primeiro = False
+    if 'finalizar' in request.POST:
+        return render(request, 'agradecimento.html')
+    elif 'mais' in request.POST:
+        filenames = get_random_filenames(4)
+        return render(request, 'classificar.html', {'amostras': filenames, 'primeiro': primeiro})

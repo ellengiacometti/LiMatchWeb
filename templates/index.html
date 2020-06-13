@@ -2,11 +2,6 @@
 {% load static %}
 {% static "images/amostras" as urlamostra %}
 
-<!--
-	Overflow by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
 		<title>LiMatch Web</title>
@@ -23,9 +18,6 @@
 				<header>
 					<h1>Classificação de limas Tahiti utilizando visão computacional</h1>
 				</header>
-				<footer>
-					<a href="#banner" class="button style2 scrolly-middle">LiMatch</a>
-				</footer>
 			</section>
 
 		<!-- Banner -->
@@ -33,262 +25,48 @@
 				<header>
 					<h2>Bem vindo ao LiMatch!</h2>
 				</header>
-				<p> Precisamos da sua ajuda para aprimorar nossa pesquisa de classificação de Limas Tahiti. <br>Posso contar com você? <br/></p>
+				<p> Precisamos da sua ajuda para aprimorar nossa inteligência artificial.
+					<br>Posso contar com você?</p>
 				<footer>
 					<a href="#DadosCadastrais" class="button style2 scrolly">Vamos lá !</a>
 				</footer>
 			</section>
 
 		<!-- Dados Cadastrais -->
-			<form id="DadosCadastrais" class="container box style3">
-				<header>
-					<p>Já vamos começar! Mas, antes preciso de alguns dados seus.<br/> Vai ser rapidinho!</p>
+				<article id="DadosCadastrais" class="container box style3">
 					<header>
-				   <h2>Quem é você?</h2>
+				   		<h2>Quem é você?</h2>
+						<p>Já vamos começar! Mas, antes preciso de alguns dados seus.<br/> Vai ser rapidinho!</p>
 					</header>
-					<form method="post" action="teste" >
+					<form method="post" action="classificar" >
 						{% csrf_token %}
 						<div class="row">
-							<div class="col-6 col-12-mobile">
-								<input class="text" type="text" name="name" id="name" value="" placeholder="Ellen Giacometti" />
-							</div>
-							<div class="col-6 col-12-mobile">
-								<input class="text" type="text" name="email" id="email" value="" placeholder="********@gmail.com" />
-							</div>
-							<div class="col-12">
-								<select name="cargo" id="cargo">
-									<option value="">Atua como</option>
-									<option value="ET">Estudante</option>
-									<option value="PF">Professor</option>
-									<option value="TI">TI</option>
-									<option value="OT">Outros</option>
-								</select>
-							</div>
-						</div>
-					<br>
-					<a href="#Instruir" class="button style3 scrolly">Feito!</a>
-				</header>
-			</form>
-			</article>
- 	<!-- Instrução -->
-			<article id="Instruir" class="container box style3">
-				<header>
-					<h2>Como classificar as limas?</h2>
-					<p> Nessa pesquisa separamos as limas em  quatros categorias.<br>Pode deixar que vou te explicar quais são :) <br>
-						Depois de virar um expert em limas, vou te  mostrar algumas imagens.<br>E aí você me diz em qual categoria a lima da foto se parece.</br></p>
-					<br>
-					<a href="#LC" class="button style3 scrolly">Entendi!</a>
-				</header>
-			</article>
+								<div class="col-6 col-12-mobile">
+									<input class="text" type="text" name="name" id="name" value="" placeholder="Nome Completo" />
+								</div>
+								<div class="col-6 col-12-mobile">
+									<input class="text" type="text" name="email" id="email" value="" placeholder="Email" />
+								</div>
+								<div class="col-12">
+									<select name="cargo" id="cargo">
+										<option value="">Atua como</option>
+										<option value="ET">Estudante</option>
+										<option value="PF">Professor</option>
+										<option value="TI">TI</option>
+										<option value="OT">Outros</option>
+									</select>
+								</div>
 
-
-		<!-- Feature 1 -->
-			<article id=LC class="container box style1 right">
-				<img src="static/images/limamodelos/Modelo_LC.jpg" alt="" class="image fit"/>
-				<div class="inner">
-					<header id="first">
-						<h2>Liso Com Defeito</h2>
-					</header>
-					<p>Classe que possui a casca predominantemente lisa, podendo ter buracos, marcas e outras colorações indicando defeitos.
-					<br> </br>
-						<a href="#LS" class="button style1 scrolly" >OK!</a>
-					</p>
-				</div>
-				<br>
-			</article>
-
-		<!-- Feature 2 -->
-			<article id="LS" class="container box style1 left">
-				<img src="static/images/limamodelos/Modelo_LS.jpg" alt=""  class="image fit"/>
-				<div class="inner">
-					<header id="second">
-						<h2>Liso Sem Defeito </h2>
-					</header>
-					<p >Classe cuja casca está lisa e sem imperfeições indicando que o fruto está maduro ideal para consumo.</p>
-				</div>
-				<br>
-				<a href="#RC" class="button style1 scrolly">OK!</a>
-			</article>
-		<!-- Feature 3 -->
-			<article id = "RC" class="container box style1 right">
-				<img src="static/images/limamodelos/Modelo_RC.jpg" alt=""  class="image fit"/>
-				<div class="inner">
-					<header id="third">
-						<h2>Rugoso Com Defeito</h2>
-					</header>
-					<p >Classe que possui casca áspera, tendo  partes com marcas e irregularidades na cor ou forma.
-					<br> </br>
-					<a href="#fourth" class="button style1 scrolly">OK!</a>
-					</p>
-				</div>
-				<br>
-			</article>
-
-		<!-- Feature 4 -->
-			<article id="RS"  class="container box style1 left">
-				<img src="static/images/limamodelos/Modelo_RS.jpg" alt="" class="image fit"/>
-				<div class="inner">
-					<header  id="fourth">
-						<h2>Rugoso Sem Defeito</h2>
-					</header>
-					<p> Esta classe é reconhecida por ter sua casca extremamente rugosa mas, sem imperfeições.</p>
-				</div>
-				<br>
-				<a href="#Classificar" class="button style1 scrolly">OK!</a>
-			</article>
-
-
-
-
-
-				<!--Lista de Figuras-->
-				<!-- REMOVER
-				<div class="inner gallery">
-					<div class="row gtr-0">
-						<div class="col-3 col-12-mobile"><a href="static/images/fulls/01.jpg" class="image fit"><img src="static/images/thumbs/01.jpg" alt="" title="Ad infinitum" /></a></div>
-						<div class="col-3 col-12-mobile"><a href="static/images/fulls/02.jpg" class="image fit"><img src="static/images/fulls/02.jpg" alt="" title="Dressed in Clarity" /></a></div>
-						<div class="col-3 col-12-mobile"><a href="{ % static 'static/images/fulls/01.jpg' %}" class="image fit"><img src="{ % 'static/images/fulls/01.jpg' %}" alt="" title="Raven" /></a></div>
-						<div class="col-3 col-12-mobile"><a href="{ % static 'images/fulls/04.jpg' %}" class="image fit"><img src="images/thumbs/04.jpg" alt="" title="I'll have a cup of Disneyland, please" /></a></div>
-					</div>
-					<div class="row gtr-0">
-						<div class="col-3 col-12-mobile"><a href="{ % static 'images/fulls/05.jpg' %}" class="image fit"><img src="images/thumbs/05.jpg" alt="" title="Cherish" /></a></div>
-						<div class="col-3 col-12-mobile"><a href="{ % static 'images/fulls/06.jpg' %}" class="image fit"><img src="images/thumbs/06.jpg" alt="" title="Different." /></a></div>
-						<div class="col-3 col-12-mobile"><a href="{ % static 'images/fulls/07.jpg' %}" class="image fit"><img src="images/thumbs/07.jpg" alt="" title="History was made here" /></a></div>
-						<div class="col-3 col-12-mobile"><a href="{ % static 'images/fulls/08.jpg' %}" class="image fit"><img src="images/thumbs/08.jpg" alt="" title="People come and go and walk away" /></a></div>
-					</div>
-				</div>
-
-
-		   -- Contact --
-			<article class="container box style3">
-				<header>
-					<h2>Nisl sed ultricies</h2>
-					<p>Diam dignissim lectus eu ornare volutpat orci.</p>
-				</header>
-				<form method="post" action="#">
-					<div class="row gtr-50">
-						<div class="col-6 col-12-mobile"><input type="text" class="text" name="name" placeholder="Name" /></div>
-						<div class="col-6 col-12-mobile"><input type="text" class="text" name="email" placeholder="Email" /></div>
+						<br>
 						<div class="col-12">
-							<textarea name="message" placeholder="Message"></textarea>
-						</div>
-						<div class="col-12">
-							<ul class="actions">
-								<li><input type="submit" value="Send Message" /></li>
-							</ul>
-						</div>
-					</div>
-				</form>
-			</article>
-		-->
-		<!-- Generic -->
-<!-- Feature 1 -->
-
-<section id="Classificar">
-	<form id="Classificacao" class="container box style3">
-		<header><h2> Classificação das Limas</h2></header>
-		{% for amostra in amostras %}
-			<article  class="container box style1 right">
-				<img src="{{ urlamostra }}/{{ amostra }}" alt="" class="image fit"/>
-				<br>
-				<div class="inner">
-
-					<header >
-						<h2>Amostra </h2>
-					</header>
-					<p>
-						<select class="container" style="border: 5px solid green" name="{{ amostra }}" >
-							<option value="">Escolha</option>
-							<option value="1">Lisa Sem Defeito</option>
-							<option value="2">Lisa Com Defeito</option>
-							<option value="3">Rugosa Sem Defeito</option>
-							<option value="4">Rugosa Com Defeito</option>
-							<option value="5">Imagem Borrada</option>
-						</select>
-					</p>
-				</div>
-				<p>
-				 	<br>
-					<br>
-					<br>
-				</p>
-			</article>
-		{% endfor %}
-			<article id="Registrar" class="container box style3" method="post">
-							<div class="col-12">
 								<ul class="actions">
-									<li><input type="submit" value="Acabei!" /></li>
-									<li><input type="submit"  value="Mais Amostras!" /></li>
+									<li><input type="submit" value="Feito!" class="button style1 scrolly"/></li>
 								</ul>
-							</div>
-		    </article>
-	</form>
-</section>
+						</div>
+						</div>
 
-
-
-
-				<!--
-				<section>
-				<header>
-					<h2>Generic Box</h2>
-					<p>Just a generic box. Nothing to see here.</p>
-				</header>
-				</section>
-				-->
-				<!--
-				<h2>Limas</h2>
-					</header>
-					<div class="table-wrapper">
-						<table>
-							<tbody>
-								<tr>
-									<td><img src="static/images/limamodelos/Modelo_RS.jpg" alt="" class="image fit"/></td>
-									<td style="text-align: center; vertical-align: middle;" >
-										<div style="border: 11px solid green;">
-										<select name="Lima" >
-											<option value="">Classe</option>
-											<option value="1">Lisa Sem Defeito</option>
-											<option value="2">Lisa Com Defeito</option>
-											<option value="3">Rugosa Sem Defeito</option>
-											<option value="4">Rugosa Com Defeito</option>
-											<option value="5">Imagem Borrada</option>
-										</select>
-										</div>
-									</td>
-								</tr>
-
-
-								<tr>
-									<td>24524</td>
-									<td>Ut porttitor sagittis lorem quis nisi ornare.</td>
-									<td>19.99</td>
-								</tr>
-								<tr>
-									<td>45815</td>
-									<td>Ut porttitor sagittis lorem quis nisi ornare.</td>
-									<td>29.99</td>
-								</tr>
-								<tr>
-									<td>24524</td>
-									<td>Ut porttitor sagittis lorem quis nisi ornare.</td>
-									<td>19.99</td>
-								</tr>
-							</tbody>
-
-						</table>
-					</div>
-				</section>
-				<section>
-
-					-->
-
-<!--							<div class="col-12">-->
-<!--								<textarea name="message" id="message" placeholder="Enter your message"></textarea>-->
-<!--							</div>-->
-
-
-
+					</form>
+				</article>
 
 		<section id="footer">
 			<ul class="icons">
