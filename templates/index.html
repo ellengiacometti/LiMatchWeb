@@ -186,13 +186,17 @@
 
 <section id="Classificar">
 	<form id="Classificacao" class="container box style3">
+		<header><h2> Classificação das Limas</h2></header>
 		{% for amostra in amostras %}
-			<article class="container box style1 right">
-				<img src="{{ urlamostra }}/{{ amostra }} "alt="" class="image fit"/>
+			<article  class="container box style1 right">
+				<img src="{{ urlamostra }}/{{ amostra }}" alt="" class="image fit"/>
+				<br>
 				<div class="inner">
-					<header>
+
+					<header >
+						<h2>Amostra </h2>
 					</header>
-					<p >
+					<p>
 						<select class="container" style="border: 5px solid green" name="{{ amostra }}" >
 							<option value="">Escolha</option>
 							<option value="1">Lisa Sem Defeito</option>
@@ -203,10 +207,13 @@
 						</select>
 					</p>
 				</div>
-				<br>
+				<p>
+				 	<br>
+					<br>
+					<br>
+				</p>
 			</article>
 		{% endfor %}
-	</form>
 			<article id="Registrar" class="container box style3" method="post">
 							<div class="col-12">
 								<ul class="actions">
@@ -214,9 +221,9 @@
 									<li><input type="submit"  value="Mais Amostras!" /></li>
 								</ul>
 							</div>
-
-		</article>
-	</section>
+		    </article>
+	</form>
+</section>
 
 
 
