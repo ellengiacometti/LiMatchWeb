@@ -1,0 +1,171 @@
+
+<!DOCTYPE HTML>
+{% load static %}
+{% static "images/amostras" as urlamostra %}
+
+<html>
+	<head>
+		<title>LiMatch Web</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="icon" type="image/ico" href="static/images/lima.png" />
+		<link rel="stylesheet" href="static/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="static/assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<section id="header">
+<!--				<header>-->
+					<h2>Classificação de limas Tahiti utilizando visão computacional</h2>
+<!--				</header>-->
+<!--				<footer>-->
+<!--					<a href="#banner" class="button style2 scrolly-middle">LiMatch</a>-->
+<!--				</footer>-->
+			</section>
+	{% if primeiro %}
+ 	<!-- Instrução -->
+			<article id="Instruir" class="container box style3">
+				<header>
+					<h2>Como classificar as limas?</h2>
+					<p> Nessa pesquisa separamos as limas em  quatros categorias.<br>Pode deixar que vou te explicar quais são :) <br>
+						Depois de virar um expert em limas, vou te  mostrar algumas imagens.<br>E aí você me diz em qual categoria a lima da foto se parece.</br></p>
+					<br>
+					<a href="#LC" class="button style3 scrolly">Entendi!</a>
+				</header>
+			</article>
+	{% endif %}
+
+		<!-- Feature 1 -->
+			<article id=LC class="container box style1 right">
+				<img src="static/images/limamodelos/Modelo_LC.jpg" alt="" class="image fit"/>
+				<div class="inner">
+					<header id="first">
+						<h2>Liso Com Defeito</h2>
+					</header>
+					<p>Classe que possui a casca predominantemente lisa, podendo ter buracos, marcas e outras colorações indicando defeitos.
+						<br></br>
+						<a href="#LS" class="button style1 scrolly" >OK!</a>
+					</p>
+				</div>
+				<br>
+			</article>
+
+		<!-- Feature 2 -->
+			<article id="LS" class="container box style1 left">
+				<img src="static/images/limamodelos/Modelo_LS.jpg" alt=""  class="image fit"/>
+				<div class="inner">
+					<header id="second">
+						<h2>Liso Sem Defeito </h2>
+					</header>
+					<p >Classe cuja casca está lisa e sem imperfeições indicando que o fruto está maduro ideal para consumo.
+					<br></br>
+						<a href="#RC" class="button style1 scrolly">OK!</a>
+					</p>
+				</div>
+				<br>
+			</article>
+		<!-- Feature 3 -->
+			<article id = "RC" class="container box style1 right">
+				<img src="static/images/limamodelos/Modelo_RC.jpg" alt=""  class="image fit"/>
+				<div class="inner">
+					<header id="third">
+						<h2>Rugoso Com Defeito</h2>
+					</header>
+					<p >Classe que possui casca áspera, tendo  partes com marcas e irregularidades na cor ou forma.
+					<br> </br>
+					<a href="#RS" class="button style1 scrolly" value="teste" >OK!</a>
+				</p>
+				</div>
+				<br>
+			</article>
+
+		<!-- Feature 4 -->
+			<article id="RS"  class="container box style1 left">
+				<img src="static/images/limamodelos/Modelo_RS.jpg" alt="" class="image fit"/>
+				<div class="inner">
+					<header>
+						<h2>Rugoso Sem Defeito</h2>
+					</header>
+					<p> Esta classe é reconhecida por ter sua casca extremamente rugosa mas, sem imperfeições.
+						<br></br>
+						<a href="#Classificacao" class="button style1 scrolly">OK!</a>
+					</p>
+				</div>
+			</article>
+
+<!-- Calssificação de Amostras 1 -->
+
+	<form id="Registrar" class="container box style3" method="post" action="registrar">
+		{% csrf_token %}
+	<article id="Classificacao" class="container box style3">
+		<header><h2> Classificação das Limas</h2></header>
+			{% for amostra in amostras %}
+			<article  class="container box style1 right">
+				<img src="{{ urlamostra }}/{{ amostra }}" alt="" class="image fit"/>
+				<br>
+				<div class="inner">
+					<header >
+						<h2>Amostra </h2>
+					</header>
+					<p>
+						<select class="container" style="border: 5px solid green" name="{{ amostra }}" >
+							<option value="">Escolha</option>
+							<option value="1">Lisa Sem Defeito</option>
+							<option value="2">Lisa Com Defeito</option>
+							<option value="3">Rugosa Sem Defeito</option>
+							<option value="4">Rugosa Com Defeito</option>
+							<option value="5">Imagem Borrada</option>
+						</select>
+					</p>
+				</div>
+				<p>
+				 	<br>
+					<br>
+				</p>
+			</article>
+		{% endfor %}
+		<p>
+				 	<br>
+					<br>
+		</p>
+		<div class="col-12">
+			<ul class="actions">
+				<li><input type="submit" name="finalizar" value="Acabei!" /></li>
+				<li><input type="submit"  name="mais" value="Mais Amostras!" /></li>
+			</ul>
+		</div>
+		</article>
+	</form>
+
+
+
+
+
+		<section id="footer">
+			<ul class="icons">
+				<li><a href="https://drive.google.com/file/d/1WwUvewDIEDqFxQVVpIpSRLb0KvzUt4SF/view?usp=sharing" class="icon brands fa-google-drive"><span class="label">Google Drive</span></a></li>
+				<li><a href="https://github.com/ellengiacometti/LemonCV" class="icon brands fa fa-github"><span class="label">GitHub</span></a></li>
+			</ul>
+			<div class="copyright">
+				<ul class="menu">
+					<li> All rights reserved.</li><li>Design based on: <a href="http://html5up.net">HTML5 UP</a></li><li>Edited by: Ellen Giacometti</li>
+				</ul>
+			</div>
+		</section>
+
+		<!-- Scripts -->
+			<script src="static/assets/js/jquery.min.js"></script>
+			<script src="static/assets/js/jquery.scrolly.min.js"></script>
+			<script src="static/assets/js/jquery.poptrox.min.js"></script>
+			<script src="static/assets/js/browser.min.js"></script>
+			<script src="static/assets/js/breakpoints.min.js"></script>
+			<script src="static/assets/js/util.js"></script>
+			<script src="static/assets/js/main.js"></script>
+
+	</body>
+</html>
+
+
+
+
