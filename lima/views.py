@@ -50,19 +50,14 @@ def registrar(request):
         if label is None:
             print("Me classifica! Esqueceu de mim ...")
             message="amostra"
-            return render(request, 'classificar.html', {'message': message})
-        # base= '/classificar'
-        # url='{}#{}'.format(base,nome)
-        # return redirect(url)
         else:
             print(label[0],label[1],dict_amostra[aux].get('id'),idpessoa)
             info_label=Label(maturacao=label[0],defeito=label[1],amostra_id=dict_amostra[aux].get('id'),pessoa_id=idpessoa)
             info_label.save()
             print("Salvei")
-            # print(dict_amostra[aux].get('id'),dict_amostra[aux].get('amostra'))
     if 'finalizar' in request.POST:
         return render(request, 'agradecimento.html')
     elif 'mais' in request.POST:
         filenames_novos, dict_amostra_novo = get_random_filenames(4)
         request.session['dict_amostra'] = dict_amostra_novo
-        return render(request, 'classificar.html', {'amostras': filenames_novos, 'primeiro': primeiro})
+        return render(request, 'classificar.html', {'amostras': filenames_novos, 'primeiro': primeiro,'message': message})
