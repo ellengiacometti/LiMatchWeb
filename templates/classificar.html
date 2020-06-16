@@ -16,7 +16,7 @@
 
 	{% if primeiro %}
  	<!-- Instrução -->
-			<article id="Instruir" class="container box style3">
+		<article id="Instruir" class="container box style3">
 				<header>
 					<h2>Como classificar as limas?</h2>
 					<p> Nessa pesquisa separamos as limas em  quatros categorias.<br>Pode deixar que vou te explicar quais são :) <br>
@@ -86,20 +86,19 @@
 			</article>
 		</section>
 <!-- Classificação de Amostras 1 -->
-
 		<section>
-			<article id="Classificacao" class="container caixao style3">
-				<form id="Registrar" class="container style3" method="post" action="registrar">
+			<article id="Classificacao" class="container caixao style1">
+				<header><h2> Classificação das Limas</h2></header>
+				<form id="Registrar"  method="post" action="registrar">
 					{% csrf_token %}
-					<header><h2> Classificação das Limas</h2></header>
 					{% if message == 'amostra' %}
 						<div class="alert">
-									<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+									<span class="closebtn" onclick="this.parentElement.style.display='none';">&times</span>
 									<strong>Lima sem Classificação!</strong> Por favor classifique a lima.
 						</div>
 					{% endif %}
 					{% for amostra in amostras %}
-						<article  class="caixao style1 right">
+						<article  class="box style1 right">
 							<img src="{{ urlamostra }}/{{ amostra }}" alt="" class="image fit"/>
 							<br>
 							<div class="inner">
