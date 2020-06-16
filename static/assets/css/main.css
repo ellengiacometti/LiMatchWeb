@@ -239,7 +239,127 @@ input, select, textarea {
 			}
 
 		}
+/*CAIXAO*/
+.caixao {
 
+		position: relative;
+        margin-top: 4em;
+        margin-bottom: 4em;
+	}
+		.caixao :last-child {
+			margin-bottom: 0;
+		}
+
+		.caixao.style1 {
+			background: #fff;
+			padding: 3em;
+		}
+
+			.caixao.style1 .image {
+				display: block;
+				position: absolute;
+				top: 0;
+				width: 50%;
+				height: 100%;
+				background: #152E33;
+				overflow: hidden;
+			}
+
+				.caixao.style1 .image img {
+					position: absolute;
+					top: 0;
+					height: 100%;
+					width: auto;
+				}
+
+			.caixao.style1 .inner > :last-child {
+				margin: 0;
+			}
+
+			.caixao.style1.right .image {
+				left: 0;
+			}
+
+				.caixao.style1.right .image img {
+					right: 0;
+				}
+
+			.caixao.style1.right .inner {
+				margin-left: 50%;
+				padding-left: 3em;
+			}
+
+			.caixao.style1.left .image {
+				right: 0;
+			}
+
+				.caixao.style1.left .image img {
+					left: 0;
+				}
+
+			.caixao.style1.left .inner {
+				margin-right: 50%;
+				padding-right: 3em;
+			}
+
+		.caixao.style2 {
+			text-align: center;
+		}
+
+			.caixao.style2 header {
+				display: inline-block;
+				background: #fff;
+				padding: 2em 3em 2em 3em;
+				margin: 0;
+			}
+
+				.caixao.style2 header p {
+					padding: 0;
+				}
+
+			.caixao.style2 .inner {
+				position: relative;
+				padding: 40px 0 0px 0;
+			}
+
+				.caixao.style2 .inner:after {
+					content: '';
+					display: block;
+					position: absolute;
+					top: 0;
+					left: 50%;
+					height: 100%;
+					border-left: solid 1px #fff;
+				}
+
+				.caixao.style2 .inner .row {
+					position: relative;
+				}
+
+					.caixao.style2 .inner .row:before {
+						content: '';
+						display: block;
+						position: absolute;
+						top: 50%;
+						left: 20px;
+						width: calc(100% - 40px);
+						border-bottom: solid 1px #fff;
+					}
+
+				.caixao.style2 .inner .image {
+					position: relative;
+					z-index: 1;
+					padding: 20px;
+				}
+
+		.caixao.style3 {
+			background: #fff;
+			padding: 3em;
+		}
+
+			.caixao.style3 header {
+				text-align: center;
+			}
 /* Row */
 
 	.row {
@@ -2644,7 +2764,7 @@ input, select, textarea {
         /* Message Alert */
             .alert {
               padding: 20px;
-              background-color: #f44336; /* Red */
+              background-color: #f44336!important; /* Red */
               color: white;
               margin-bottom: 15px;
             }
