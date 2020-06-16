@@ -3,7 +3,6 @@ from django.http import HttpResponse
 from .models import Pessoa, Amostra
 import random
 
-global id_pessoa
 def get_random_filenames(n):
     max_id = Amostra.objects.latest('id').id
     randomList = random.sample(range(1, max_id), n)
@@ -30,7 +29,7 @@ def classificar(request):
             info_pessoa = Pessoa(nome=nome, email=email, cargo=cargo)
             info_pessoa.save()
             print("inseriu!")
-        id_pessoa= Pessoa.objects.get(email=email).pk
+        request.session['id_pessoa']=Pessoa.objects.get(email=email).pk
         filenames = get_random_filenames(2)
         return render(request, 'classificar.html', {'amostras': filenames, 'primeiro': primeiro})
     else:
@@ -40,6 +39,9 @@ def classificar(request):
 
 def registrar(request):
     primeiro = False
+    idpessoa=request.session.get('id_pessoa')
+
+    print(idpessoa)
     if 'finalizar' in request.POST:
         return render(request, 'agradecimento.html')
     elif 'mais' in request.POST:
