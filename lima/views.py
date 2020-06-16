@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render ,redirect
 from django.http import HttpResponse
 from .models import Pessoa, Amostra, Label
 import random
@@ -36,7 +36,8 @@ def classificar(request):
         return render(request, 'classificar.html', {'amostras': filenames, 'primeiro': primeiro})
     else:
         print("Preciso de um email")
-        return render(request, 'index.html')
+        message = 'email'
+        return render(request, 'index.html',{'message': message})
 
 
 def registrar(request):
@@ -44,15 +45,21 @@ def registrar(request):
     idpessoa=request.session.get('id_pessoa')
     dict_amostra=request.session.get('dict_amostra')
     for aux in range(len(dict_amostra)):
-          label=(request.POST.get(dict_amostra[aux].get('amostra')))
-          if label is None:
-              print("Esqueceu de preencher!")
-          else:
-              print(label[0],label[1],dict_amostra[aux].get('id'),idpessoa)
-              info_label=Label(maturacao=label[0],defeito=label[1],amostra_id=dict_amostra[aux].get('id'),pessoa_id=idpessoa)
-              info_label.save()
-              print("Salvei")
-                # print(dict_amostra[aux].get('id'),dict_amostra[aux].get('amostra'))
+        nome=dict_amostra[aux].get('amostra')
+        label=(request.POST.get(nome))
+        if label is None:
+            print("Me classifica! Esqueceu de mim ...")
+            message="amostra"
+            return render(request, 'classificar.html', {'message': message})
+        # base= '/classificar'
+        # url='{}#{}'.format(base,nome)
+        # return redirect(url)
+        else:
+            print(label[0],label[1],dict_amostra[aux].get('id'),idpessoa)
+            info_label=Label(maturacao=label[0],defeito=label[1],amostra_id=dict_amostra[aux].get('id'),pessoa_id=idpessoa)
+            info_label.save()
+            print("Salvei")
+            # print(dict_amostra[aux].get('id'),dict_amostra[aux].get('amostra'))
     if 'finalizar' in request.POST:
         return render(request, 'agradecimento.html')
     elif 'mais' in request.POST:

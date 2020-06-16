@@ -15,14 +15,14 @@
 	<body class="is-preload">
 
 		<!-- Header -->
-			<section id="header">
+<!--			<section id="header">-->
 <!--				<header>-->
-					<h2>Classificação de limas Tahiti utilizando visão computacional</h2>
+<!--					<h2>Classificação de limas Tahiti utilizando visão computacional</h2>-->
 <!--				</header>-->
 <!--				<footer>-->
 <!--					<a href="#banner" class="button style2 scrolly-middle">LiMatch</a>-->
 <!--				</footer>-->
-			</section>
+<!--			</section>-->
 	{% if primeiro %}
  	<!-- Instrução -->
 			<article id="Instruir" class="container box style3">
@@ -94,7 +94,7 @@
 				</div>
 			</article>
 		</section>
-<!-- Calssificação de Amostras 1 -->
+<!-- Classificação de Amostras 1 -->
 
 	<form id="Registrar" class="container style3" method="post" action="registrar">
 		{% csrf_token %}
@@ -104,12 +104,18 @@
 			<article  class="container box style1 right">
 				<img src="{{ urlamostra }}/{{ amostra }}" alt="" class="image fit"/>
 				<br>
+				{% if message == 'amostra' %}
+					<div class="alert">
+					<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+					<strong>Lima sem Classificação!</strong> Por favor classifique a lima.
+					</div>
+				{% endif %}
 				<div class="inner">
 					<header >
-						<h2>Amostra </h2>
+						<h2 id="{{ amostra }}" >Amostra </h2>
 					</header>
 					<p>
-						<select class="container" style="border: 5px solid green" name="{{ amostra }}" >
+						<select  class="container" style="border: 5px solid green" name="{{ amostra }}" >
 							<option value="" disabled selected>Escolha</option>
 							<option value="LS">Lisa Sem Defeito</option>
 							<option value="LC">Lisa Com Defeito</option>

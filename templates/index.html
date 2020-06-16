@@ -41,6 +41,12 @@
 					<form method="post" action="classificar" >
 						{% csrf_token %}
 						<div class="row">
+								{% if message == 'email' %}
+									<div class="alert">
+										<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+										<strong>Email Vazio!</strong> Por favor preencha a informação de email.
+									</div>
+								{% endif %}
 								<div class="col-6 col-12-mobile">
 									<input class="text" type="text" name="name" id="name" value="" placeholder="Nome Completo" />
 								</div>
