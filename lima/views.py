@@ -41,6 +41,7 @@ def classificar(request):
 
 
 def registrar(request):
+    message=''
     primeiro = False
     idpessoa=request.session.get('id_pessoa')
     dict_amostra=request.session.get('dict_amostra')
@@ -48,11 +49,12 @@ def registrar(request):
         nome=dict_amostra[aux].get('amostra')
         label=(request.POST.get(nome))
         if label is None:
-            print("Me classifica! Esqueceu de mim ...")
+            print("Me classifica! Esqueceu de mim ...", nome, label)
             message="amostra"
         else:
+            idamostra= dict_amostra[aux].get('id')
             print(label[0],label[1],dict_amostra[aux].get('id'),idpessoa)
-            info_label=Label(maturacao=label[0],defeito=label[1],amostra_id=dict_amostra[aux].get('id'),pessoa_id=idpessoa)
+            info_label=Label(maturacao=label[0],defeito=label[1],amostra=Amostra.objects.get(id=idamostra),pessoa=Pessoa.objects.get(id=idpessoa))
             info_label.save()
             print("Salvei")
     if 'finalizar' in request.POST:
