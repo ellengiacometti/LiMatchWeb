@@ -45,6 +45,7 @@ def registrar(request):
     primeiro = False
     idpessoa=request.session.get('id_pessoa')
     dict_amostra=request.session.get('dict_amostra')
+    print(dict_amostra)
     for aux in range(len(dict_amostra)):
         nome=dict_amostra[aux].get('amostra')
         label=(request.POST.get(nome))
