@@ -1,20 +1,28 @@
 from django.shortcuts import render ,redirect
 from django.http import HttpResponse
 from .models import Pessoa, Amostra, Label
+import numpy as np
 import random
 
 
 def get_random_filenames(n,pessoa):
-    print(pessoa)
+    print("Id:",pessoa)
     labeled_files = Label.objects.values_list('amostra_id',flat= True).filter(pessoa_id=pessoa)
-    print(labeled_files)
-    max_id = Amostra.objects.latest('id').id
-    randomList = random.sample(range(1, max_id), n)
+    unique_labeled= np.unique(labeled_files).tolist()
+    print("Classificadas:",unique_labeled)
+    lista_amostras=list(Amostra.objects.values_list('id',flat=True))
+    print("Amostras:",lista_amostras)
+    for a in unique_labeled:
+        if a in lista_amostras:
+            lista_amostras.remove(a)
+    if len(lista_amostras)<=n:
+        n=len(lista_amostras)
+    randomList = random.sample(lista_amostras, n)
+    print("Lista de amostras final:",lista_amostras)
+    print("Lista escolhida:", randomList)
     filenames = Amostra.objects.values_list('amostra', flat=True).filter(id__in= randomList)
     dict_amostra = list(Amostra.objects.values('id','amostra').filter(id__in=randomList))
-    for file in labeled_files:
-        if file in dict_amostra:
-            dict_amostra.remove(file)
+
     return filenames,dict_amostra
 
 
@@ -56,7 +64,10 @@ def registrar(request):
     print(dict_amostra)
     for aux in range(len(dict_amostra)):
         nome=dict_amostra[aux].get('amostra')
+        print("Nome",nome)
         label=(request.POST.get(nome))
+        print(request.POST)
+        print("Label",label)
         if label is None:
             print("Me classifica! Esqueceu de mim ...", nome, label)
             message="amostra"
@@ -69,6 +80,6 @@ def registrar(request):
     if 'finalizar' in request.POST:
         return render(request, 'agradecimento.html')
     elif 'mais' in request.POST:
-        filenames_novos, dict_amostra_novo = get_random_filenames(4)
+        filenames_novos, dict_amostra_novo = get_random_filenames(4,request.session['id_pessoa'])
         request.session['dict_amostra'] = dict_amostra_novo
         return render(request, 'classificar.html', {'amostras': filenames_novos, 'primeiro': primeiro,'message': message})
