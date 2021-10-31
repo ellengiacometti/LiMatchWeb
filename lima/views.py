@@ -46,7 +46,7 @@ def classificar(request):
             info_pessoa.save()
             print("inseriu!")
         request.session['id_pessoa']=Pessoa.objects.get(email=email).pk
-        filenames,dict_amostra = get_random_filenames(2,request.session['id_pessoa'])
+        filenames,dict_amostra = get_random_filenames(10,request.session['id_pessoa'])
         print(dict_amostra)
         if dict_amostra:
                 request.session['dict_amostra'] = dict_amostra
@@ -83,7 +83,7 @@ def registrar(request):
     if 'finalizar' in request.POST:
         return render(request, 'agradecimento.html')
     elif 'mais' in request.POST:
-        filenames_novos, dict_amostra_novo = get_random_filenames(4,request.session['id_pessoa'])
+        filenames_novos, dict_amostra_novo = get_random_filenames(8,request.session['id_pessoa'])
         print(dict_amostra_novo)
         if dict_amostra_novo :
                 request.session['dict_amostra'] = dict_amostra_novo
