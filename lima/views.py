@@ -47,10 +47,12 @@ def classificar(request):
             print("inseriu!")
         request.session['id_pessoa']=Pessoa.objects.get(email=email).pk
         filenames,dict_amostra = get_random_filenames(2,request.session['id_pessoa'])
-        if dict_amostra is None:
+        print(dict_amostra)
+        if dict_amostra:
+                request.session['dict_amostra'] = dict_amostra
+                return render(request, 'classificar.html', {'amostras': filenames, 'primeiro': primeiro})
+        else:
             return render(request, 'agradecimento.html')
-        request.session['dict_amostra'] = dict_amostra
-        return render(request, 'classificar.html', {'amostras': filenames, 'primeiro': primeiro})
     else:
         print("Preciso de um email")
         message = 'email'
@@ -82,7 +84,9 @@ def registrar(request):
         return render(request, 'agradecimento.html')
     elif 'mais' in request.POST:
         filenames_novos, dict_amostra_novo = get_random_filenames(4,request.session['id_pessoa'])
-        if dict_amostra_novo is None:
+        print(dict_amostra_novo)
+        if dict_amostra_novo :
+                request.session['dict_amostra'] = dict_amostra_novo
+                return render(request, 'classificar.html', {'amostras': filenames_novos, 'primeiro': primeiro,'message': message})
+        else:
             return render(request, 'agradecimento.html')
-        request.session['dict_amostra'] = dict_amostra_novo
-        return render(request, 'classificar.html', {'amostras': filenames_novos, 'primeiro': primeiro,'message': message})
