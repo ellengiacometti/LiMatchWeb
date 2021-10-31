@@ -22,7 +22,6 @@ def get_random_filenames(n,pessoa):
     print("Lista escolhida:", randomList)
     filenames = Amostra.objects.values_list('amostra', flat=True).filter(id__in= randomList)
     dict_amostra = list(Amostra.objects.values('id','amostra').filter(id__in=randomList))
-
     return filenames,dict_amostra
 
 
@@ -48,6 +47,8 @@ def classificar(request):
             print("inseriu!")
         request.session['id_pessoa']=Pessoa.objects.get(email=email).pk
         filenames,dict_amostra = get_random_filenames(2,request.session['id_pessoa'])
+        if dict_amostra is None:
+            return render(request, 'agradecimento.html')
         request.session['dict_amostra'] = dict_amostra
         return render(request, 'classificar.html', {'amostras': filenames, 'primeiro': primeiro})
     else:
@@ -81,5 +82,7 @@ def registrar(request):
         return render(request, 'agradecimento.html')
     elif 'mais' in request.POST:
         filenames_novos, dict_amostra_novo = get_random_filenames(4,request.session['id_pessoa'])
+        if dict_amostra_novo is None:
+            return render(request, 'agradecimento.html')
         request.session['dict_amostra'] = dict_amostra_novo
         return render(request, 'classificar.html', {'amostras': filenames_novos, 'primeiro': primeiro,'message': message})
