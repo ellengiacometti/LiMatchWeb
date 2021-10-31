@@ -3,12 +3,20 @@ from django.http import HttpResponse
 from .models import Pessoa, Amostra, Label
 import random
 
-def get_random_filenames(n):
+
+def get_random_filenames(n,pessoa):
+    print(pessoa)
+    labeled_files = Label.objects.values_list('amostra_id',flat= True).filter(pessoa_id=pessoa)
+    print(labeled_files)
     max_id = Amostra.objects.latest('id').id
     randomList = random.sample(range(1, max_id), n)
     filenames = Amostra.objects.values_list('amostra', flat=True).filter(id__in= randomList)
     dict_amostra = list(Amostra.objects.values('id','amostra').filter(id__in=randomList))
+    for file in labeled_files:
+        if file in dict_amostra:
+            dict_amostra.remove(file)
     return filenames,dict_amostra
+
 
 # Create your views here.
 
@@ -31,7 +39,7 @@ def classificar(request):
             info_pessoa.save()
             print("inseriu!")
         request.session['id_pessoa']=Pessoa.objects.get(email=email).pk
-        filenames,dict_amostra = get_random_filenames(2)
+        filenames,dict_amostra = get_random_filenames(2,request.session['id_pessoa'])
         request.session['dict_amostra'] = dict_amostra
         return render(request, 'classificar.html', {'amostras': filenames, 'primeiro': primeiro})
     else:
