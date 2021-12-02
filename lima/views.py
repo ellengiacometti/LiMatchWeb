@@ -83,7 +83,7 @@ def registrar(request):
     if 'finalizar' in request.POST:
         return render(request, 'agradecimento.html')
     elif 'mais' in request.POST:
-        filenames_novos, dict_amostra_novo = get_random_filenames(8,request.session['id_pessoa'])
+        filenames_novos, dict_amostra_novo = get_random_filenames(10,request.session['id_pessoa'])
         print(dict_amostra_novo)
         if dict_amostra_novo :
                 request.session['dict_amostra'] = dict_amostra_novo
