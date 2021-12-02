@@ -29,6 +29,7 @@ class Amostra(models.Model):
     asm= models.FloatField(default=None)
     color=models.TextField(max_length=600)
     raio= models.FloatField(default=None)
+    grupo=models.IntegerField(default=None)
 
     def __str__(self):
         return self.amostra
