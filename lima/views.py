@@ -10,7 +10,7 @@ def get_random_filenames(n,pessoa):
     labeled_files = Label.objects.values_list('amostra_id',flat= True).filter(pessoa_id=pessoa)
     unique_labeled= np.unique(labeled_files).tolist()
     print("Classificadas:",unique_labeled)
-    lista_amostras = list( Amostra.objects.values_list('id',flat=True).filter(grupo=1) )
+    lista_amostras = list( Amostra.objects.values_list('id',flat=True).filter(grupo=2) )
     print("Amostras:",lista_amostras)
     for a in unique_labeled:
         if a in lista_amostras:
